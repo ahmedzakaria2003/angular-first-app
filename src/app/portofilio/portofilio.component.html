@@ -1,0 +1,23 @@
+<section class="py-5">
+    <div class="container">
+      <app-main-title [title]="'portfolio component'" [darkTheme]="true"></app-main-title>
+      <div class="portfolio-container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 gy-4">
+          @for(portItem of portItems; track $index) {
+            <div class="col">
+              <span (click)="getPopUp(portItem.srcImg)" class="image-hover d-block rounded overflow-hidden">
+                <img [src]="portItem.srcImg" [alt]="portItem.alt" class="w-100 d-block">
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+    @defer{
+      <div #popUpElement class="popup bg-opacity-25 bg-primary" (click)="closePopUp($event)">
+          <span class="d-block">
+            <img [src]="popUpImage" alt="" class="w-100 d-block">
+          </span>
+      </div>
+    }
+    </section>
